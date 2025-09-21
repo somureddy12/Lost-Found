@@ -21,7 +21,6 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()   // login/register allowed
                 .requestMatchers("/api/items/report").authenticated()
                 .requestMatchers("/api/items/found/report").authenticated()
-                .requestMatchers("/index.html","/report-found.html","/report-lost.html","/items.html").authenticated()
                 .anyRequest().permitAll()
             )
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
