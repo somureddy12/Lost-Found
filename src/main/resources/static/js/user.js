@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   try {
     // Fetch user's items from backend
-    const response = await fetch(`http://localhost:8080/api/auth/${userId}/items`);
+    const response = await fetch(`/api/auth/${userId}/items`);
     if (!response.ok) throw new Error('Failed to fetch your items');
     const items = await response.json();
     userItemsSection.innerHTML = '';
