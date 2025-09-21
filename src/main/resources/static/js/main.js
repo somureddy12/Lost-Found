@@ -166,23 +166,87 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // -------------------- Navbar Search --------------------
+// -------------------- Navbar Search (Redirect for Index Page) --------------------
 document.addEventListener('DOMContentLoaded', () => {
-  const navbarSearchForm = document.getElementById('navbarSearchForm');
-  const navbarSearchInput = document.getElementById('navbarSearchInput');
+  const quickSearchForm = document.getElementById('navbarSearchForm');
+  const quickSearchInput = document.getElementById('navbarSearchInput');
 
-  if (navbarSearchForm && navbarSearchInput) {
-    navbarSearchForm.addEventListener('submit', async (e) => {
+  if (quickSearchForm && quickSearchInput) {
+    quickSearchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const keyword = navbarSearchInput.value.trim();
+      const keyword = quickSearchInput.value.trim();
       if (!keyword) return;
 
-      try {
-        // Perform search with keyword (other filters can be empty)
-        const items = await searchItems({ status: '', category: '', location: '', keyword });
-        renderItems(items, 'items-list');
-      } catch (err) {
-        console.error('Navbar search failed:', err);
-      }
+      // Redirect to items.html with search query
+      window.location.href = `items.html?search=${encodeURIComponent(keyword)}`;
     });
   }
 });
+
+
+
+// -------------------- Restrict Pages Before Login (Animated Popup) --------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const restrictedPages = ["/report-lost.html", "/report-found.html"];
+  const currentPage = window.location.pathname;
+
+  if (restrictedPages.includes(currentPage)) {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (!user) {
+      // Create popup overlay
+      const popup = document.createElement("div");
+      popup.style.position = "fixed";
+      popup.style.top = "0";
+      popup.style.left = "0";
+      popup.style.width = "100%";
+      popup.style.height = "100%";
+      popup.style.backgroundColor = "rgba(0,0,0,0.5)";
+      popup.style.display = "flex";
+      popup.style.alignItems = "center";
+      popup.style.justifyContent = "center";
+      popup.style.zIndex = "10000";
+      popup.style.opacity = "0";
+      popup.style.transition = "opacity 0.3s ease";
+
+      // Popup content box
+      const box = document.createElement("div");
+      box.style.background = "#fff";
+      box.style.padding = "2rem";
+      box.style.borderRadius = "8px";
+      box.style.textAlign = "center";
+      box.style.maxWidth = "400px";
+      box.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+      box.style.transform = "scale(0.8)";
+      box.style.transition = "transform 0.3s ease";
+      box.innerHTML = `
+        <h4 style="margin-bottom:1rem;">⚠️ Login Required</h4>
+        <p style="margin-bottom:1.5rem;">You need to be logged in to access this page.</p>
+        <button id="popupOkBtn" class="btn btn-primary">OK</button>
+      `;
+
+      popup.appendChild(box);
+      document.body.appendChild(popup);
+
+      // Prevent scrolling behind popup
+      document.body.style.overflow = "hidden";
+
+      // Animate fade-in
+      requestAnimationFrame(() => {
+        popup.style.opacity = "1";
+        box.style.transform = "scale(1)";
+      });
+
+      // OK button click handler
+      document.getElementById("popupOkBtn").addEventListener("click", () => {
+        // Animate fade-out
+        popup.style.opacity = "0";
+        box.style.transform = "scale(0.8)";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 300); // match transition duration
+      });
+    }
+  }
+});
+
