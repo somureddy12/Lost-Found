@@ -1,6 +1,6 @@
 // items.js - Lost & Found Portal (Row-wise layout, 2 columns per row)
 
-const apiBaseUrl = 'http://localhost:8080/api';
+const apiBaseUrl = '/api';
 
 // -------------------- Auth Helper --------------------
 function getAuthHeaders() {
