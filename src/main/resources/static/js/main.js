@@ -54,7 +54,7 @@ if (quickSearchForm) {
     if (!recentReportsSection) return;
     recentReportsSection.innerHTML = '<div class="col-12 text-center text-muted">Searching...</div>';
     try {
-      const response = await fetch(`http://localhost:8080/api/items/search?query=${encodeURIComponent(query)}`);
+      const response = await fetch(`/api/items/search?query=${encodeURIComponent(query)}`);
       if (!response.ok) throw new Error('Search failed');
       const items = await response.json();
       recentReportsSection.innerHTML = '';
