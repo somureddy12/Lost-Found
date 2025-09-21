@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Fetch all items from backend
-    const response = await fetch("http://localhost:8080/api/items/getAllItems");
+    const response = await fetch("/api/items/getAllItems");
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const items = await response.json();
