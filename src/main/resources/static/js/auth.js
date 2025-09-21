@@ -1,5 +1,5 @@
 // -------------------- Base API URL --------------------
-const apiBaseUrl = 'http://localhost:8080/api';
+const apiBaseUrl = '/api';
 
 // -------------------- Auth Functions --------------------
 async function registerUser(userData) {
