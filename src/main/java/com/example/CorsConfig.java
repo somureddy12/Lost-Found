@@ -9,13 +9,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CorsConfig {
 
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
+    WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Apply to all endpoints
                         .allowedOrigins(
-                            "http://localhost:3000", // local frontend (if React or similar)
                             "https://lost-found-web-application-production.up.railway.app" // production frontend
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
@@ -24,3 +23,4 @@ public class CorsConfig {
         };
     }
 }
+
