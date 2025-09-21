@@ -29,6 +29,8 @@ Cloud Deployment: Railway (Free tier)
 
 ScreenShot
 <img width="1437" height="776" alt="Screenshot 2025-09-20 at 5 44 22 PM" src="https://github.com/user-attachments/assets/b6e084fa-2877-4b20-9893-e7c01e0bc117" />
+<img width="1430" height="813" alt="Screenshot 2025-09-21 at 6 21 39 PM" src="https://github.com/user-attachments/assets/49bf92c1-a796-4497-923a-a6b128b97549" />
+
 <img width="1440" height="777" alt="Screenshot 2025-09-20 at 5 44 37 PM" src="https://github.com/user-attachments/assets/1da90d15-92f3-4351-90b4-d97b8be71170" />
 <img width="1440" height="776" alt="Screenshot 2025-09-20 at 5 44 48 PM" src="https://github.com/user-attachments/assets/1c20ec77-c489-4d62-8935-8bcfccef7f3f" />
 <img width="1433" height="774" alt="Screenshot 2025-09-20 at 5 45 09 PM" src="https://github.com/user-attachments/assets/49d98d21-5217-4b1c-8ca0-d2382288e51e" />
