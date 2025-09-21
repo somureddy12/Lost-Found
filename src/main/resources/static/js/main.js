@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   if (recentReportsSection && window.location.pathname.endsWith('index.html')) {
     try {
       // Fetch 3 most recent items from backend
-      const response = await fetch('/api/items?limit=3&sort=recent');
+      const response = await fetch('http://localhost:8080/api/items?limit=3&sort=recent');
       if (!response.ok) throw new Error('Failed to fetch recent items');
       const items = await response.json();
       // Clear sample cards
