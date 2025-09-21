@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const token = localStorage.getItem('token') || '';
-      const response = await fetch("http://localhost:8080/api/items/report", {
+      const response = await fetch("/api/items/report", {
         method: "POST",
         body: formData,
         headers: {
