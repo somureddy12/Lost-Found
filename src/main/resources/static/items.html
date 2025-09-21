@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browse Items | Lost & Found Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Add Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="navbar-brand me-auto d-flex align-items-center gap-1" href="index.html">
+        <i class="bi bi-house-door-fill fs-3 text-dark"></i>
+        <span class="fw-bold text-dark" style="font-size:2rem;">Lost & Found</span>
+      </a>
+      <form class="d-flex mx-auto" id="navbarSearchForm" style="max-width: 320px; min-width: 200px;">
+        <input class="form-control rounded-2 me-2 text-dark" type="search" placeholder="Search for items..." aria-label="Search" id="navbarSearchInput">
+        <button class="btn btn-outline-primary rounded-2 text-dark" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-center d-none d-lg-flex">
+        <li class="nav-item"><a class="btn btn-outline-secondary ms-2 rounded-2 d-flex align-items-center gap-1 text-dark" href="items.html"><i class="bi bi-list"></i>Browse Items</a></li>
+        <li class="nav-item"><a class="btn btn-primary ms-2 rounded-2 d-flex align-items-center gap-1 text-dark" href="report-lost.html"><i class="bi bi-exclamation-circle"></i>Report Lost</a></li>
+        <li class="nav-item"><a class="btn btn-primary ms-2 rounded-2 d-flex align-items-center gap-1 text-dark" href="report-found.html"><i class="bi bi-plus-circle"></i>Report Found</a></li>
+        <li class="nav-item"><a class="btn btn-outline-secondary ms-2 rounded-2 p-2 d-flex align-items-center justify-content-center text-dark" id="loginNav" href="login.html" style="width:40px;height:40px;"><i class="bi bi-person fs-5"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="border-bottom" style="border-color: #e9ecef !important;"></div>
+
+  <main class="flex-grow-1">
+  <!-- Filter/Search Section -->
+  <div class="container my-4">
+    <form id="filterForm" class="row g-3 align-items-end">
+      <div class="col-md-2">
+        <label for="typeFilter" class="form-label">Type</label>
+        <select class="form-select" id="typeFilter" name="status">
+          <option value="">All</option>
+          <option value="lost">Lost</option>
+          <option value="found">Found</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="categoryFilter" class="form-label">Category</label>
+        <select class="form-select" id="categoryFilter" name="category">
+          <option value="">All</option>
+          <option value="ID Card">ID Card</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Bag">Bag</option>
+          <option value="accessories">accessories</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="locationFilter" class="form-label">Location</label>
+        <input type="text" class="form-control" id="locationFilter" name="location" placeholder="Location">
+      </div>
+      <div class="col-md-2">
+        <label for="dateFrom" class="form-label">From</label>
+        <input type="date" class="form-control" id="dateFrom" name="dateFrom">
+      </div>
+      <div class="col-md-2">
+        <label for="dateTo" class="form-label">To</label>
+        <input type="date" class="form-control" id="dateTo" name="dateTo">
+      </div>
+      <div class="col-md-2">
+        <label for="sortFilter" class="form-label">Sort</label>
+        <select class="form-select" id="sortFilter" name="sort">
+          <option value="recent">Most Recent</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Items List -->
+  <div class="container my-4">
+    <div id="items-list" class="row g-4">
+      <!-- JS will populate items here as cards with images -->
+    </div>
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation example" class="mt-4">
+      <ul class="pagination justify-content-center" id="pagination">
+        <!-- JS will populate pagination here -->
+      </ul>
+    </nav>
+  </div>
+  </main>
+  <!-- <footer class="footer mt-5">
+    <div>Lost &amp; Found Portal &copy; 2024 &middot; <a href="mailto:help@lostfound.edu" class="text-primary">Contact Us</a></div>
+    <div class="small mt-2">Made with ❤️ for your campus community</div>
+  </footer> -->
+
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/items.js"></script>
+</body>
+</html> 

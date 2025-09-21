@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile - Lost & Found Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="navbar-brand me-auto d-flex align-items-center gap-1" href="index.html">
+        <i class="bi bi-house-door-fill fs-3 text-dark"></i>
+        <span class="fw-bold text-dark" style="font-size:2rem;">Lost & Found</span>
+      </a>
+      <form class="d-flex mx-auto" id="navbarSearchForm" style="max-width: 320px; min-width: 200px;">
+        <input class="form-control rounded-2 me-2 text-dark" type="search" placeholder="Search for items..." aria-label="Search" id="navbarSearchInput">
+        <button class="btn btn-outline-primary rounded-2 text-dark" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-center d-none d-lg-flex">
+        <li class="nav-item"><a class="btn btn-outline-secondary ms-2 rounded-2 d-flex align-items-center gap-1 text-dark" href="items.html"><i class="bi bi-list"></i>Browse Items</a></li>
+        <li class="nav-item"><a class="btn btn-primary ms-2 rounded-2 d-flex align-items-center gap-1 text-dark" href="report-lost.html"><i class="bi bi-exclamation-circle"></i>Report Lost</a></li>
+        <li class="nav-item"><a class="btn btn-primary ms-2 rounded-2 d-flex align-items-center gap-1 text-dark" href="report-found.html"><i class="bi bi-plus-circle"></i>Report Found</a></li>
+        <li class="nav-item"><a class="btn btn-outline-secondary ms-2 rounded-2 p-2 d-flex align-items-center justify-content-center text-dark" id="loginNav" href="profile.html" style="width:40px;height:40px;"><i class="bi bi-person fs-5"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="border-bottom" style="border-color: #e9ecef !important;"></div>
+
+  <!-- Profile Section -->
+  <section class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg p-4">
+          <h2 class="mb-4 text-center">User Profile</h2>
+          <h4 class="text-center mb-4 text-primary" id="welcomeMessage"></h4>
+          <form id="profileForm">
+            <div class="mb-3">
+              <label for="profileName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="profileName" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="profileEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="profileEmail" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="profileContact" class="form-label">Contact</label>
+              <input type="text" class="form-control" id="profileContact" readonly>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" id="editBtn" class="btn btn-primary">Edit</button>
+              <button type="submit" id="saveBtn" class="btn btn-success d-none">Save</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- 🔹 History Section -->
+        <!-- User History -->
+        <section class="container mt-5">
+          <h3 class="text-center mb-4">Your History</h3>
+          <div id="historyContainer" class="row g-4">
+            <!-- Cards will load here with col classes -->
+          </div>
+        </section>
+
+
+
+
+        <div class="text-center mt-4">
+          <button class="btn btn-outline-danger" id="logoutBtn">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </section>
+    <footer class="footer mt-5">
+    <div>Lost &amp; Found Portal &copy; 2024 &middot; <a href="mailto:help@lostfound.edu" class="text-primary">Contact Us</a></div>
+    <div class="small mt-2">Made with ❤️ for your campus community</div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Profile Logic -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!user) {
+    window.location.href = "login.html"; // if not logged in
+    return;
+  }
+
+  const welcomeMessage = document.getElementById("welcomeMessage");
+  const nameInput = document.getElementById("profileName");
+  const emailInput = document.getElementById("profileEmail");
+  const contactInput = document.getElementById("profileContact");
+  const editBtn = document.getElementById("editBtn");
+  const saveBtn = document.getElementById("saveBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  // Show Welcome {User}
+  welcomeMessage.textContent = `Welcome ${user.name}`;
+
+  // Populate user data
+  nameInput.value = user.name || "";
+  emailInput.value = user.email || "";
+  contactInput.value = user.contact || "";
+
+  // Enable editing
+  editBtn.addEventListener("click", function() {
+    nameInput.removeAttribute("readonly");
+    contactInput.removeAttribute("readonly");
+    editBtn.classList.add("d-none");
+    saveBtn.classList.remove("d-none");
+  });
+
+  // Save updated data (only local for now)
+  document.getElementById("profileForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    user.name = nameInput.value;
+    user.contact = contactInput.value;
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    nameInput.setAttribute("readonly", true);
+    contactInput.setAttribute("readonly", true);
+    saveBtn.classList.add("d-none");
+    editBtn.classList.remove("d-none");
+    alert("Profile updated successfully!");
+  });
+
+  
+
+  // Logout
+  logoutBtn.addEventListener("click", function() {
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+  });
+    // Load user history
+    console.log(user.phone);
+
+  loadHistory(user.contact);
+
+});
+
+
+// Load User History from Backend
+async function loadHistory(phone) {
+  try {
+    const container = document.getElementById("historyContainer");
+
+    // Fetch all items from backend using template literal
+    const response = await fetch(`http://localhost:8080/api/items/history/${phone}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+    const items = await response.json();
+
+    container.innerHTML = "";
+
+    if (!items || items.length === 0) {
+      container.innerHTML = `<p class="text-center text-muted">No history found.</p>`;
+      return;
+    }
+
+    items.forEach(item => {
+      const badgeClass = item.status === "lost" ? "bg-danger" : "bg-success";
+      const badgeText = item.status === "lost" ? "🔍 Lost" : "✅ Found";
+
+      const imgSrc = item.imageBase64
+        ? `data:image/jpeg;base64,${item.imageBase64}`
+        : "https://via.placeholder.com/400x220?text=No+Image";
+
+      const cardHTML = `
+      <div class="col-auto d-flex justify-content-center mb-4">
+        <div class="card h-100 text-center position-relative" style="width: 4cm; min-width: 250px;">
+          <img src="${imgSrc}" class="card-img-top" alt="${item.name || 'Item'}" style="height:220px; object-fit:cover; width:100%;">
+          <span class="badge ${badgeClass} position-absolute top-0 start-0 m-2">${badgeText}</span>
+          <div class="card-body text-start d-flex flex-column justify-content-between w-100">
+            <h5 class="card-title">${item.name || 'Unnamed Item'}</h5>
+            <p class="card-text text-truncate">${item.description || ''}</p>
+            <p class="mb-1"><strong>Location:</strong> ${item.location || 'N/A'}</p>
+            <p class="mb-1"><strong>Date:</strong> ${item.dateReported || 'N/A'}</p>
+          </div>
+        </div>
+      </div>
+    `;
+
+
+      container.insertAdjacentHTML("beforeend", cardHTML);
+    });
+
+  } catch (error) {
+    console.error("Failed to fetch items:", error);
+    document.getElementById("historyContainer").innerHTML =
+      `<p class="text-center text-danger">⚠️ Failed to load history. Please try again later.</p>`;
+  }
+}
+
+  </script>
+</body>
+</html>

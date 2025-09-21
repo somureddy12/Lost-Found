@@ -1,0 +1,134 @@
+body {
+  background-color: #f8f9fa;
+}
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+/* Card hover effect */
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 1.5px 6px rgba(0,0,0,0.08);
+  transform: translateY(-4px) scale(1.02);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+
+
+
+/* Button transition */
+.btn {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn:hover, .btn:focus {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* Section divider (wavy) */
+.divider-wavy {
+  width: 100%;
+  height: 48px;
+  background: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.29,22.09,104.09,29,158,17.39C230.87,51.13,284.09,26.87,339,14.29c54.55-12.5,104.09-6.5,158,7.39,53.64,13.77,104.09,35.77,158,38.77,53.64,3,104.09-13.77,158-24.77,53.64-11,104.09-17,158-14.29,53.64,2.68,104.09,13.77,158,24.77,53.64,11,104.09,17,158,14.29V0Z" opacity=".25" fill="%23a0aec0"></path><path d="M0,0V15.81C47.29,37.9,104.09,44.81,158,33.2c72.87-14.55,126.09-38.81,181-51.39,54.55-12.5,104.09-6.5,158,7.39,53.64,13.77,104.09,35.77,158,38.77,53.64,3,104.09-13.77,158-24.77,53.64-11,104.09-17,158-14.29,53.64,2.68,104.09,13.77,158,24.77,53.64,11,104.09,17,158,14.29V0Z" opacity=".5" fill="%23a0aec0"></path><path d="M0,0V5.81C47.29,27.9,104.09,34.81,158,23.2c72.87-14.55,126.09-38.81,181-51.39,54.55-12.5,104.09-6.5,158,7.39,53.64,13.77,104.09,35.77,158,38.77,53.64,3,104.09-13.77,158-24.77,53.64-11,104.09-17,158-14.29,53.64,2.68,104.09,13.77,158,24.77,53.64,11,104.09,17,158,14.29V0Z" fill="%23a0aec0"></path></svg>') no-repeat center bottom/cover;
+}
+
+/* Footer styles */
+.footer {
+  background: #f8f9fa;
+  color: #6c757d;
+  padding: 32px 0 16px 0;
+  text-align: center;
+  font-size: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Dark mode support (optional) */
+.dark {
+  background: #181a1b !important;
+  color: #e2e8f0 !important;
+}
+.dark .card {
+  background: #23272b;
+  color: #e2e8f0;
+}
+.dark .footer {
+  background: #23272b;
+  color: #a0aec0;
+}
+
+/* Navbar button border and hover effect - always visible border/text, only bg changes on hover */
+.navbar .btn {
+  border: 2px solid var(--bs-primary);
+  border-radius: 50rem;
+  color: var(--bs-primary);
+  background: #fff;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.navbar .btn:hover, .navbar .btn:focus {
+  background: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+}
+
+.navbar .btn-outline-secondary {
+  border: 2px solid var(--bs-secondary);
+  color: var(--bs-secondary);
+  background: #fff;
+}
+.navbar .btn-outline-secondary:hover, .navbar .btn-outline-secondary:focus {
+  background: var(--bs-secondary);
+  color: #fff;
+  border-color: var(--bs-secondary);
+}
+
+/* Navbar button: white bg, colored border/text, orange on hover */
+.navbar .btn,
+.navbar .btn-primary,
+.navbar .btn-outline-secondary {
+  background: #fff !important;
+  color: #06b6d4 !important;
+  border: 2px solid #06b6d4 !important;
+}
+.navbar .btn-outline-secondary {
+  color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+.navbar .btn:hover,
+.navbar .btn:focus,
+.navbar .btn-primary:hover,
+.navbar .btn-primary:focus,
+.navbar .btn-outline-secondary:hover,
+.navbar .btn-outline-secondary:focus {
+  background: #fd7e14 !important;
+  color: #fff !important;
+  border-color: #fd7e14 !important;
+} 
+
+/* All navbar buttons: light brown border */
+.navbar .btn,
+.navbar .btn-primary,
+.navbar .btn-outline-secondary {
+  border: 2px solid #bfa181 !important;
+}
+.navbar .btn:hover,
+.navbar .btn:focus,
+.navbar .btn-primary:hover,
+.navbar .btn-primary:focus,
+.navbar .btn-outline-secondary:hover,
+.navbar .btn-outline-secondary:focus {
+  border: 2px solid #bfa181 !important;
+} 
+
+/* Remove fixed width for navbar buttons (revert to previous flexible sizing) */
+/* No width, min-width, or max-width set for .navbar .btn, .navbar .btn-primary, .navbar .btn-outline-secondary */ 
+
+/* Ensure text is white in dark mode for hero section and navbar */
+.dark, .bg-dark, .navbar.bg-dark {
+  color: #fff !important;
+}
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+.navbar.bg-dark .navbar-brand, .navbar.bg-dark .nav-link, .navbar.bg-dark .btn, .navbar.bg-dark a, .navbar.bg-dark span, .navbar.bg-dark p {
+  color: #fff !important;
+}
+#hero-section.text-white h1, #hero-section.text-white h2, #hero-section.text-white h3, #hero-section.text-white h4, #hero-section.text-white h5, #hero-section.text-white h6, #hero-section.text-white p, #hero-section.text-white span, #hero-section.text-white a {
+  color: #fff !important;
+} 
