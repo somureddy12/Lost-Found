@@ -154,7 +154,7 @@ async function loadHistory(phone) {
     const container = document.getElementById("historyContainer");
 
     // Fetch all items from backend using template literal
-    const response = await fetch(`http://localhost:8080/api/items/history/${phone}`);
+    const response = await fetch(`/api/items/history/${phone}`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const items = await response.json();
